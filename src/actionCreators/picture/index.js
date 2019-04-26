@@ -6,7 +6,7 @@ import {getFetch, postFetch} from '../../utils/network/request/HttpExtension'
 import {PATH} from '../../constants/urls'
 
 const picList = (params) => getFetch(PATH.PICTURE_LIST, params)
-
+                             // default url= http://v3.wufazhuce.com:8000/api  ?
 const picDetail = params =>  getFetch(`${PATH.PICTURE_DETAIL}${params}`, params)
 
 const pastList = params => {

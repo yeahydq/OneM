@@ -98,7 +98,8 @@ const scenes = Actions.create(
                  hideNavBar />
 
           <Scene key="main" initial back={false} hideNavBar component={TabBar}/>
-
+          
+          {/* Dick: it's the sample with remark on the redux */}
           <Scene key="picDetail" hideNavBar component={connect(
             (state) => state.picture.picList,
             Action.dispatch('picture')

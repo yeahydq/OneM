@@ -29,6 +29,10 @@ export default class PicDetail extends BaseComponent {
   }
 
   componentDidMount() {
+    // Dick: getPicDetail is from src/actions/picture/index.js
+    // Dick:   createAction('PICTURE_DETAIL', actions.picDetail)
+    // Dick:   createAction('PICTURE_DETAIL', params =>  getFetch(`${PATH.PICTURE_DETAIL}${params}`, params))
+    // Dick:  http://v3.wufazhuce.com:8000/api/hp/detail/<this.props.id>/
     this.props.getPicDetail(this.props.id).then((response) => {
       this.setState({data: response.value.data})
     })

@@ -65,7 +65,7 @@ export default class MusicDetail extends Component {
             </View>
           </View>
           <View style={styles.toolBar}>
-            <TouchableOpacity onPress={() => this.setState({contentMode: 0})}>
+            <TouchableOpacity onPress={(π) => this.setState({contentMode: 0})}>
               <Image style={{width: 50, height: 50}} source={require('../../../assets/images/music_story_default.png')}/>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.setState({contentMode: 1})}>

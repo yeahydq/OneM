@@ -25,6 +25,10 @@ export default class MovieDetail extends Component {
   }
 
   componentDidMount() {
+    // Dick: src/actions/movie/index.js
+    // createAction(type.MOVIE_DETAIL, actions.movieDetail)
+    // params => getFetch('MOVIE_DETAIL', params, ApiSource.TIMETICKET)
+    // https://ticket-api-m.mtime.cn/movie/detail.api?locationId=290&movieId=218090
     this.props.getMovieDetail({movieId: this.props.id})
     this.props.getMovieComment({movieId: this.props.id})
   }
