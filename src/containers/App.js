@@ -117,6 +117,7 @@ const scenes = Actions.create(
             Action.dispatch('picture')
           )(PicGridList)}/>
 
+          {/* Dick: it's the sample with remark on the redux */}
           <Scene key="movieDetail" hideNavBar component={connect(
             (state) => state.movie.movieDetail,
             Action.dispatch('movie')
@@ -157,6 +158,8 @@ const scenes = Actions.create(
             Action.dispatch('music')
           )(MusicDetail)}
           />
+          {/* Dick: http://v3.wufazhuce.com:8000/api/music/idlist/0 */}
+          {/* http://v3.wufazhuce.com:8000/api/music/bymonth/2019-03 */}
 
           <Scene key='musicList' hideNavBar component={connect(
             (state) => state.music.music,

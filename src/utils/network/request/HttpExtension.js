@@ -9,6 +9,8 @@ import {API_URL, MIAMI_URL, TIME_MOVIE_URL, TIME_TICKET_URL} from '../../../cons
 import {ApiSource} from '../../../constants/commonType'
 import {dataCache} from '../cache'
 
+// Dick: fetchData 是一个双箭头函数，
+// 主要是用来根据第一组参数(isCache, requestType) => 生成新的带参数(url, params, source, callback)的函数
 /**
  * GET \ POST
  * 从缓存中读取数据
