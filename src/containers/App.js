@@ -96,7 +96,8 @@ const scenes = Actions.create(
         <Stack key="init" back>
           <Scene key="launch" component={Launch}
                  hideNavBar />
-
+                 
+          {/* Dick: 首页 */}
           <Scene key="main" initial back={false} hideNavBar component={TabBar}/>
           
           {/* Dick: it's the sample with remark on the redux */}
@@ -116,6 +117,9 @@ const scenes = Actions.create(
             (state) => state.picture.picList,
             Action.dispatch('picture')
           )(PicGridList)}/>
+
+          {/* 首页 */}
+          {/* src/components/pages/movie/movie.js has state.movie.movieList */}
 
           {/* Dick: it's the sample with remark on the redux */}
           <Scene key="movieDetail" hideNavBar component={connect(

@@ -79,6 +79,11 @@ OneM是一款纯ReactNative开发的APP，也是作者开发的第三个RN项目
 7. `react-native run-android`
 8. `cd android && ./gradlew assembleRelease`
 
+9. debug: CMD + SHIFT + P  >Run android on Emulator
+10. debug -> Debug Attach to packager
+11. debug -> Debug Android
+
+
 [TODO] if not ok to run, switch into other project to run-android, then come back to this project
 <!-- 6. `npm start` -->
 <!-- 1. 使用Xcode 或者Android Studio 运行项目 -->
