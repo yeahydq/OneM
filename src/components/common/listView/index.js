@@ -1,7 +1,9 @@
 /**
  * Created by guangqiang on 2017/9/15.
  */
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types';
+
 import {View, Text, RefreshControl, ListView, ActivityIndicator} from '../index'
 import {StyleSheet} from 'react-native'
 import {commonStyle} from '../../../utils/commonStyle'
