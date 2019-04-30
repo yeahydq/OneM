@@ -1,7 +1,9 @@
 /**
  * Created by guangqiang on 2017/8/27.
  */
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native'
 import {commonStyle} from '../../../utils/commonStyle'
 import {Icon} from '../../../utils/icon'

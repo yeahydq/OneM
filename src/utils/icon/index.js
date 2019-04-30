@@ -1,7 +1,9 @@
 /**
  * Created by guangqiang on 2017/9/14.
  */
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
+import PropTypes from 'prop-types';
+
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import {OIcon} from './oneIconFont'
 
