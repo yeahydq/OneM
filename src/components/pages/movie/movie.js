@@ -24,13 +24,23 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
+    // getMovieShowTimeList is from src/actions/movie/index.js, seems auto be added to props by the reduce?
+    // getMovieShowTimeList is the action(src/actions/movie/index.js) -> reducer(src/reducers/movie/movieList.js)
     Promise.all([this.props.getMovieShowTimeList(), this.props.getMovieComeingNewList()]).then(response => {
       this.setState({
-        showTimeList: response[0].value.ms,
-        comeingNewList: response[1].value.moviecomings,
-        attentionList: response[1].value.attention
+        showTimeList: response[0].value.ms,             // https://api-m.mtime.cn/Showtime/LocationMovies.api?locationId=290
+        comeingNewList: response[1].value.moviecomings, // https://api-m.mtime.cn/Movie/MovieComingNew.api?locationId=290
+        attentionList: response[1].value.attention      // https://api-m.mtime.cn/Movie/MovieComingNew.api?locationId=290
       })
+      // console.log('Debug: response',response[1])
     })
+
+    // use LogCat - emulatorxxx to chk
+    console.log('Dick: this props:', this.props)
+    console.log('Dick: this state:', this.state)
+    // console.log('Dick: store state:', store.getState())
+
+
   }
 
   onValueChange = (value) => {
@@ -80,9 +90,22 @@ const styles = StyleSheet.create({
   },
 })
 
-const _MovieList = connect(
+  // 1) STORE(state.movie.movieList) is controled by the reducers(src/reducers/movie/movieList.js)
+  // 2) this.state is defined in UI componment(MovieList)
+  // 3) props(this.props.getMovieShowTimeList()) seems controled by below dispatch action
+
+  const _MovieList = connect(
   (state) => state.movie.movieList,
+
   Action.dispatch('movie')
+        //    Action.dispatch('movie')
+        // -> src/actions/index.js
+        // -> src/actions/movie/index.js 
+        // -> src/actionCreators/movie/index.js (Real actions)
 )(MovieList)
+
+// Dick: Below is for debug
+import store from '../../../store'
+console.log('Dick: store state:', store.getState())
 
 export default _MovieList

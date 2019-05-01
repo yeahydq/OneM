@@ -8,10 +8,14 @@ const initialState = {
   showTimeList: [],
   comeingNewList: [],
   attentionList: [],
-  trailerList: []
+  trailerList: [],
 }
 
 const originalReducers = {}
+
+// src/actions/movie/index.js
+// const getMovieShowTimeList = createAction(type.MOVIE_SHOWTIME_LIST, actions.movieShowTimeList)
+// actions.movieShowTimeList()'s result will packaed as action.payload object?
 
 originalReducers[type.MOVIE_SHOWTIME_LIST + type.FETCH_SUCCESS_SUFFIX] = (state, action) => {
   return {

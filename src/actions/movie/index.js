@@ -17,9 +17,11 @@ const getPlusComment = createAction(type.MOVIE_PLUS_COMMENT, actions.moviePlusCo
 const getTrailerList = createAction(type.MOVIE_TRAILER_LIST, actions.movieTrailerList)
 const getActorList = createAction(type.MOVIE_ACTOR_LIST, actions.movieActorList)
 const getPictureList = createAction(type.MOVIE_PICTURE_LIST, actions.moviePictureList)
+const getDickList = createAction(type.MOVIE_PICTURE_LIST, actions.moviePictureList)
 
 const actionCreators = {
-  getMovieList: params => getMovieList(params),
+  // getMovieList: params => getMovieList(params),
+  getMovieList,
   getMovieDetail,
   getMovieStory,
   getMovieListForDemo,
@@ -31,6 +33,7 @@ const actionCreators = {
   getTrailerList,
   getActorList,
   getPictureList,
+  getDickList,
 }
 
 export default {actionCreators}

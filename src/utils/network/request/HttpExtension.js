@@ -8,6 +8,7 @@ import HttpUtils from './HttpUtils'
 import {API_URL, MIAMI_URL, TIME_MOVIE_URL, TIME_TICKET_URL} from '../../../constants/urlConfig'
 import {ApiSource} from '../../../constants/commonType'
 import {dataCache} from '../cache'
+import store from '../../../store'
 
 // Dick: fetchData 是一个双箭头函数，
 // 主要是用来根据第一组参数(isCache, requestType) => 生成新的带参数(url, params, source, callback)的函数
@@ -50,6 +51,9 @@ const fetchData = (isCache, requestType) => (url, params, source, callback) => {
     return promise
   }
 
+  // console.log('dick debug', store.getState())
+  // console.log('dick'+store.getState()['movie.movieList'])
+  // console.log('Debug: url = ',url)
   return dataCache(url, fetchFunc, isCache)
 }
 
