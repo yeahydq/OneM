@@ -16,7 +16,8 @@ const host = {
     TIME_MOVIE_URL: 'https://api-m.mtime.cn',
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'http://m.xxx.com',
-    VENILOG_URL: 'http://venilog.xxx.com'
+    VENILOG_URL: 'http://venilog.xxx.com',
+    EDUAPPBACKEND_URL : 'http://127.0.0.1:5000',
   },
   qa: {
     API_URL: 'http://api.xxx.com',
@@ -24,7 +25,8 @@ const host = {
     TIME_MOVIE_URL: 'https://api-m.mtime.cn',
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'http://m.xxx.com',
-    VENILOG_URL: 'http://venilog.xxx.com'
+    VENILOG_URL: 'http://venilog.xxx.com',
+    EDUAPPBACKEND_URL : 'http://127.0.0.1:5000',
   },
   pre: {
     API_URL: 'http://api.xxx.com',
@@ -32,7 +34,8 @@ const host = {
     TIME_MOVIE_URL: 'https://api-m.mtime.cn',
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'http://m.xxx.com',
-    VENILOG_URL: 'http://venilog.xxx.com'
+    VENILOG_URL: 'http://venilog.xxx.com',
+    EDUAPPBACKEND_URL : 'http://127.0.0.1:5000',
   },
   prd: {
     API_URL: 'http://v3.wufazhuce.com:8000/api',
@@ -40,7 +43,8 @@ const host = {
     TIME_MOVIE_URL: 'https://api-m.mtime.cn',
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'http://m.xxx.com',
-    VENILOG_URL: 'http://venilog.xxx.com'
+    VENILOG_URL: 'http://venilog.xxx.com',
+    EDUAPPBACKEND_URL : 'http://127.0.0.1:5000',
   }
 }
 
@@ -58,4 +62,16 @@ const VENILOG_URL = currentHost.VENILOG_URL
 const MIAMI_URL = currentHost.XIAMI_URL
 const TIME_MOVIE_URL = currentHost.TIME_MOVIE_URL
 const TIME_TICKET_URL = currentHost.TIME_TICKET_URL
-export {ENV, API_URL, MSITE_URL, VENILOG_URL, MIAMI_URL, TIME_MOVIE_URL, TIME_TICKET_URL, setHost}
+const EDUAPPBACKEND_URL = currentHost.EDUAPPBACKEND_URL
+
+export {
+  ENV, 
+  API_URL, 
+  MSITE_URL, 
+  VENILOG_URL, 
+  MIAMI_URL, 
+  TIME_MOVIE_URL, 
+  TIME_TICKET_URL, 
+  EDUAPPBACKEND_URL, 
+  setHost
+}

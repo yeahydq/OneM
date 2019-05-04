@@ -5,10 +5,17 @@ import {getFetch, postFetch, postFetchForValidator} from '../../utils/network/re
 import {PATH} from '../../constants/urls'
 import {Required, ValidateUtil} from '../../utils/validatorUtil'
 import {RegExpr} from '../../utils'
+import {ApiSource} from '../../constants/commonType'
+import {API_URL, MIAMI_URL, TIME_MOVIE_URL, TIME_TICKET_URL, EDUAPPBACKEND_URL} from '../../../constants/urlConfig'
 
-const login = params =>  postFetchForValidator(PATH.MUSIC_ID_LIST, params)
+// const login = params =>  postFetchForValidator(PATH.MUSIC_ID_LIST, params)
+// const login = params =>  getFetch(PATH.MUSIC_ID_LIST, params)
+const login = params =>  postFetchForValidator(PATH.EDU_APP_REG, params)
+
+// const movieCommentList = params => getFetch(PATH.MOVIE_COMMENT_LIST, params, ApiSource.TIMETICKET)
 
 const register = params =>  postFetchForValidator(PATH.MUSIC_ID_LIST, params)
+// const register = params =>  getFetch(PATH.EDU_APP_REG, params)
 
 const loginValidator = () => ({
   validator: {

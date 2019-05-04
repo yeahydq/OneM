@@ -10,9 +10,12 @@ import ActionCreator from '../../actionCreators/me'
           //   2） payloadCreator: ActionFunctionAny<Payload>  => the function used to get the data
           //   3） metaCreator: ActionFunctionAny<Meta>   => validate the parameters before get the data?
 const mockLogin = createAction(type.MOVIE_LIST, ActionCreator.login, ActionCreator.loginValidator)
+// const mockLogin = createAction(type.MOVIE_LIST, ActionCreator.login)
+const eduAppLogin = createAction(type.EDU_APP_REG, ActionCreator.login, ActionCreator.loginValidator)
 
 const actionCreators = {
-  mockLogin
+  mockLogin,
+  eduAppLogin,
 }
 
 export default {actionCreators}
