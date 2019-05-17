@@ -30,7 +30,7 @@ const dispatch = name => dispatch => {
     for (let i = 0; i < name.length; i++) {
       Object.assign(tempActionCreators, action[name[i]].actionCreators)
     }
-    return bindActionCreators(tempActionCreators, dispatch)
+    return bindActionCreators(tempActionCreators, dispatch)  // Dick: https://cn.redux.js.org/docs/api/bindActionCreators.html
   } else {
     return bindActionCreators(action[name].actionCreators, dispatch)
   }

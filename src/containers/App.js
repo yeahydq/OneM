@@ -94,6 +94,7 @@ const scenes = Actions.create(
       <Lightbox key="lightbox" hideNavBar={true}>
 
         <Stack key="init" back>
+          {/* Dick: 欢迎页 */}
           <Scene key="launch" component={Launch}
                  hideNavBar />
 
@@ -202,7 +203,7 @@ const scenes = Actions.create(
 
           <Scene key='userLogin' hideNavBar component={connect(
             (state) => state.me.login,
-            Action.dispatch(['login', 'openChat'])
+            Action.dispatch(['login', 'openChat'])  // Dick: binding all the 'actions' related to login/openChat, into the componment property
           )(UserLogin)}/>
 
           <Scene key='userRegister' hideNavBar component={connect(

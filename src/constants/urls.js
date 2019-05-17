@@ -36,6 +36,9 @@ const PATH = {
   READING_COMMENT_LIST: '/comment/praiseandtime/',
   READING_ARTICLE_CATE_LIST: '/bymonth/',
 
+  // EDU_APP_REG: 'http://127.0.0.1:5000/v1/info/readmeinfo',
+  EDU_APP_REG: '/v1/info/readmeinfo',
+  EDU_APP_LOGIN: '/v1/auth/login',
   // 获取find模块数据
   FIND: '/xxx/xxx',
   // 首页H5

@@ -9,14 +9,15 @@ import {Actions} from 'react-native-router-flux'
 import {sharePlatform} from '../../../../constants/commonType'
 
 const LoginModule = NativeModules.loginModule
+import store from '../../../../store'
 
 export default class Login extends BaseComponent {
 
   constructor(props) {
     super(props)
     this.state = {
-      userName: '',
-      pwd: '',
+      userName: 'dick_mobile',
+      password: 'python',
       secret: true
     }
   }
@@ -51,6 +52,7 @@ export default class Login extends BaseComponent {
               text = text.replace(/ /g, '_')
               this.setState({userName: text})
             }}
+            defaultValue={'defaultValue'}
             value={this.state.userName}
           />
         </View>
@@ -59,6 +61,7 @@ export default class Login extends BaseComponent {
           <TextInput
             style={{flex: 1, marginHorizontal: 10,  fontSize: 14}}
             placeholder={'密码'}
+            defaultValue={'defaultValue'}
             secureTextEntry={this.state.secret}
             onChangeText={text => {
               text = text.replace(/ /g, '_')
@@ -78,18 +81,73 @@ export default class Login extends BaseComponent {
 
   loginClick() {
     let params = {}
-    params.name = this.state.userName
-    params.pwd = this.state.pwd
-    params.iconurl = 'http://ovyjkveav.bkt.clouddn.com/17-11-9/48949929.jpg'
-    params.gender = '男'
-    params.province = '上海'
-    params.city = '静安'
-    let actions = this.props.mockLogin(params)
+    params.userName = this.state.userName
+    params.password = this.state.password
+    // params.iconurl = 'http://ovyjkveav.bkt.clouddn.com/17-11-9/48949929.jpg'
+    // params.gender = '男'
+    // params.province = '上海'
+    // params.city = '333静安333'
+    // let actions = this.props.mockLogin(params)
+    // let actions = this.props.eduAppLoginCurl(params)
+    let actions = this.props.eduAppLogin(params)
+    console.log('Dick: here1')
+    console.log('Dick: this props:', this.props)
+    console.log('Dick: this state:', this.state)
+    console.log('Dick: store state:', store.getState())
+
+  //   fetch('http://192.168.2.238:5000/v1/info/readmeinfo')
+  // .then((response) => response.text())
+  // .then((responseText) => {
+  //   console.log(responseText);
+  // })
+  // .catch((error) => {
+  //   console.warn(error);
+  // });
+
+    // // Promise.all([this.props.mockLogin(params)], [this.props.eduAppLogin(params)]).then(response => {
+    // Promise.all([this.props.eduAppLogin(params)]).then(response => {
+    //     console.log('Debug response: ',response[0])
+    // },
+    // (err) => {
+    //   console.log(err.message) // jser down
+    // })
+
     if (actions instanceof Promise) {
-      storage.save('userInfo', params)
-      this.props.callback && this.props.callback('login')
+      // console.log(this.props.eduAppLogin(params))
+      // this.props.eduAppLogin(params).then(response => {
+      //       console.log('Debug eduAppLogin response: ',response)
+      //   },
+      //   (err) => {
+      //     console.log(err.message) // jser down
+      //   })
+
+      console.log('Dick: here2')
+
+      // actions.then((value) => {
+      //   console.log('Debug: 1',value);
+      // }), (value) => console.log(value);
+      
+      // Promise.all([this.props.mockLogin(params)]).then(response => {
+      //   console.log('Debug: response',response)
+      // }),
+      // (response => console.log('Debug: response',response))
+        // console.log('Debug: response',response[1])
+
+      // storage.save('userInfo', params)         // Dick: logout in src/components/pages/me/setting.js -> logoutClick() 
+      this.props.callback && this.props.callback('login') // callback is defined in src/components/pages/me/me.js
       Toast.showSuccess('登录成功', () => Actions.pop())
+      // Toast.showSuccess('登录成功', )
+
     }
+
+    // Promise.all([this.props.getMovieShowTimeList(), this.props.getMovieComeingNewList()]).then(response => {
+    //   this.setState({
+    //     showTimeList: response[0].value.ms,             // https://api-m.mtime.cn/Showtime/LocationMovies.api?locationId=290
+    //     comeingNewList: response[1].value.moviecomings, // https://api-m.mtime.cn/Movie/MovieComingNew.api?locationId=290
+    //     attentionList: response[1].value.attention      // https://api-m.mtime.cn/Movie/MovieComingNew.api?locationId=290
+    //   })
+    //   // console.log('Debug: response',response[1])
+    // })
   }
 
   authLogin(platform) {

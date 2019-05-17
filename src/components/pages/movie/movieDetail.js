@@ -30,7 +30,10 @@ export default class MovieDetail extends Component {
     // actions.movieDetail is a function, which use params as parameter (i.e. {movieId: this.props.id} here)
     // params => getFetch('MOVIE_DETAIL', params, ApiSource.TIMETICKET)
     // https://ticket-api-m.mtime.cn/movie/detail.api?locationId=290&movieId=218090
+    console.log("Dick: Before get Movi Detail: ", this.props.movieDetail)
     this.props.getMovieDetail({movieId: this.props.id})
+    console.log("Dick: after get Movi Detail: ", this.props.movieDetail)
+
     this.props.getMovieComment({movieId: this.props.id})
   }
 
@@ -111,7 +114,7 @@ export default class MovieDetail extends Component {
   }
 
   renderContent() {
-    let data = this.props.movieDetail
+    let data = this.props.movieDetail   // Dick: this is the data
     let basic = data.basic
     let boxOffice = data.boxOffice
     let live = data.live
@@ -435,7 +438,7 @@ export default class MovieDetail extends Component {
   }
 
   render() {
-    let data = this.props.movieDetail
+    let data = this.props.movieDetail           // Dick: only when MOVIE_DETAIL_SUCCESS
     let commentData = this.props.commentData
     return (
       data.basic && commentData.mini ?

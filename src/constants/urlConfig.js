@@ -8,7 +8,8 @@ const host = {
     TIME_MOVIE_URL: 'https://api-m.mtime.cn',
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'https://api.douban.com',
-    VENILOG_URL: 'https://api.douban.com'
+    VENILOG_URL: 'https://api.douban.com',
+    EDUAPPBACKEND_URL : 'http://127.0.0.1:5000',
   },
   alpha: {
     API_URL: 'http://api.xxx.com',
@@ -35,18 +36,21 @@ const host = {
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'http://m.xxx.com',
     VENILOG_URL: 'http://venilog.xxx.com',
-    EDUAPPBACKEND_URL : 'http://127.0.0.1:5000',
+    EDUAPPBACKEND_URL : 'http://192.168.2.238:5000',
   },
   prd: {
     API_URL: 'http://v3.wufazhuce.com:8000/api',
+    // API_URL: 'http://127.0.0.1:5000',
     XIAMI_URL: 'http://xiamirun.avosapps.com',
     TIME_MOVIE_URL: 'https://api-m.mtime.cn',
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'http://m.xxx.com',
     VENILOG_URL: 'http://venilog.xxx.com',
-    EDUAPPBACKEND_URL : 'http://127.0.0.1:5000',
+    EDUAPPBACKEND_URL : 'http://192.168.2.238:5000',
   }
 }
+// ifconfig | grep inet\ | tail -1 | cut -d " " -f 2
+
 
 let ENV = 'prd'
 let currentHost = host[ENV]

@@ -81,6 +81,7 @@ class Me extends BaseComponent {
             </View> :
             <View style={{flexDirection: 'row', alignItems: commonStyle.center}}>
               <TouchableOpacity style={[styles.loginBtn, {borderColor: '#F37207'}]} onPress={() => Actions.userLogin({callback: (type) => this.callback(type)})}>
+              {/* Actions.userLogin is from src/containers/App.js  */}
                 <Text style={{color: '#F37207'}}>登录</Text>
               </TouchableOpacity>
               <TouchableOpacity style={[styles.loginBtn, {borderColor: '#878787'}]} onPress={() => Actions.userRegister({callback: (type) => this.callback(type)})}>

@@ -61,6 +61,7 @@ const actionType = {
   READING_ARTICLE__LIST: 'READING_ARTICLE__LIST',
 
   EDU_APP_REG: 'EDU_APP_REG',
+  EDU_APP_LOGIN: 'EDU_APP_LOGIN',
 }
 
 export default actionType

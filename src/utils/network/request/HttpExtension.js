@@ -38,18 +38,20 @@ const fetchData = (isCache, requestType) => (url, params, source, callback) => {
       break
     case ApiSource.EDUAPPBACKEND:
       url = `${EDUAPPBACKEND_URL}${url}`
+      // console.log("Dick debug url:",url)
       break
     default:
       url = `${API_URL}${url}`
-      break
+    break
   }
-
+  // url = 'http://localhost:5000/v1/info/readmeinfo'
   const fetchFunc = () => {
     let promise = requestType === 'GET' ? HttpUtils.getRequest(url, params) : HttpUtils.postRequrst(url, params)
     if (callback && typeof callback === 'function') {
       promise.then(response => {
+        console.log('DEBUG', response)
         return callback(response)
-      })
+      }), response => console.log('DEBUG', response)
     }
     return promise
   }
@@ -91,7 +93,8 @@ const getFetchFromCache = fetchData(true, 'GET')
 const postFetchForValidator = (url, params) => {
   let promise
   promise = () => {
-    return fetchData(false, 'GET')(url, {})
+    // return fetchData(false, 'GET')(url, {})
+    return fetchData(false, 'POST')(url, params, ApiSource.EDUAPPBACKEND)
   }
   return {
     data: params,

@@ -16,7 +16,7 @@ const middlewares = [
   customThunk(),
   promiseMiddleware({promiseTypeSuffixes: ['LOADING', 'SUCCESS', 'ERROR']}),
   loggerMiddleware(),
-  venilogMiddleware(),
+  // venilogMiddleware(),
 ]
 
 const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)

@@ -19,8 +19,8 @@ export default class MainPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedTab: 'Movie'
-      // selectedTab: 'Me'
+      // selectedTab: 'Movie'
+      selectedTab: 'Me'
     }
   }
 
