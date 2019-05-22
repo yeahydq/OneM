@@ -49,9 +49,8 @@ const fetchData = (isCache, requestType) => (url, params, source, callback) => {
     let promise = requestType === 'GET' ? HttpUtils.getRequest(url, params) : HttpUtils.postRequrst(url, params)
     if (callback && typeof callback === 'function') {
       promise.then(response => {
-        console.log('DEBUG', response)
         return callback(response)
-      }), response => console.log('DEBUG', response)
+      })
     }
     return promise
   }

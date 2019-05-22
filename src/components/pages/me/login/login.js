@@ -7,18 +7,23 @@ import {BaseComponent} from '../../../base/baseComponent'
 import {Icon, deviceInfo, Toast, commonStyle, storage} from '../../../../utils'
 import {Actions} from 'react-native-router-flux'
 import {sharePlatform} from '../../../../constants/commonType'
+import {connect} from 'react-redux'
+import Action from '../../../../actions'
 
 const LoginModule = NativeModules.loginModule
 import store from '../../../../store'
 
 export default class Login extends BaseComponent {
+// class Login extends BaseComponent {
 
   constructor(props) {
     super(props)
     this.state = {
       userName: 'dick_mobile',
       password: 'python',
-      secret: true
+      secret: true,
+      auth_token: undefined,
+
     }
   }
 
@@ -95,31 +100,21 @@ export default class Login extends BaseComponent {
     console.log('Dick: this state:', this.state)
     console.log('Dick: store state:', store.getState())
 
-  //   fetch('http://192.168.2.238:5000/v1/info/readmeinfo')
-  // .then((response) => response.text())
-  // .then((responseText) => {
-  //   console.log(responseText);
-  // })
-  // .catch((error) => {
-  //   console.warn(error);
-  // });
-
-    // // Promise.all([this.props.mockLogin(params)], [this.props.eduAppLogin(params)]).then(response => {
-    // Promise.all([this.props.eduAppLogin(params)]).then(response => {
-    //     console.log('Debug response: ',response[0])
-    // },
-    // (err) => {
-    //   console.log(err.message) // jser down
-    // })
-
     if (actions instanceof Promise) {
       // console.log(this.props.eduAppLogin(params))
-      // this.props.eduAppLogin(params).then(response => {
-      //       console.log('Debug eduAppLogin response: ',response)
-      //   },
-      //   (err) => {
-      //     console.log(err.message) // jser down
-      //   })
+      actions.then(response => {
+            console.log('Debug eduAppLogin response: ',response)
+            storage.save('userInfo', params)         // Dick: logout in src/components/pages/me/setting.js -> logoutClick() 
+            var token=response.value.auth_token
+            storage.save('authtoken', token)
+            this.props.callback && this.props.callback('login') // callback is defined in src/components/pages/me/me.js , line 52
+            Toast.showSuccess('登录成功', () => Actions.pop())
+        },
+        (err) => {
+          console.log(err.message) // jser down
+          this.props.callback && this.props.callback('fail') // callback is defined in src/components/pages/me/me.js , line 52
+          Toast.showSuccess('登录失败', () => Actions.pop())
+        })
 
       console.log('Dick: here2')
 
@@ -134,8 +129,8 @@ export default class Login extends BaseComponent {
         // console.log('Debug: response',response[1])
 
       // storage.save('userInfo', params)         // Dick: logout in src/components/pages/me/setting.js -> logoutClick() 
-      this.props.callback && this.props.callback('login') // callback is defined in src/components/pages/me/me.js
-      Toast.showSuccess('登录成功', () => Actions.pop())
+      // this.props.callback && this.props.callback('login') // callback is defined in src/components/pages/me/me.js , line 52
+      // Toast.showSuccess('登录成功', () => Actions.pop())
       // Toast.showSuccess('登录成功', )
 
     }
@@ -166,7 +161,7 @@ export default class Login extends BaseComponent {
           style={styles.loginBtn}
           onPress={() => this.loginClick()}
         >
-          <Text style={{color: commonStyle.white, fontSize: 17}}>登录</Text>
+          <Text style={{color: commonStyle.white, fontSize: 17}}>登录 {this.props.logindy.auth_token}</Text>
         </TouchableOpacity>
         <View style={{flexDirection: commonStyle.row, alignItems: commonStyle.center, marginTop: 15, marginHorizontal: 30, justifyContent: commonStyle.between}}>
           <TouchableOpacity onPress={() => Actions.userRegister()}>
@@ -240,3 +235,11 @@ const styles = StyleSheet.create({
     borderRadius: 25
   }
 })
+
+
+// const _Login = connect(
+//   state => state.me.login,
+//   Action.dispatch('login')
+// )(Login)
+
+// export default _Login

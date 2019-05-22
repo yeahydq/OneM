@@ -28,9 +28,18 @@ class MovieList extends Component {
     // getMovieShowTimeList is the action(src/actions/movie/index.js) -> reducer(src/reducers/movie/movieList.js)
 
     // this.props.getMovieShowTimeList() -> this is the promise and need to write 'resolve' function for it
-    this.props.getMovieShowTimeList()
+    // this.props.getMovieShowTimeList()
+    console.log("HERE you are", this.props.getMovieShowTimeList())
     this.props.getMovieComeingNewList()
-    
+
+    // actions=this.props.getMovieComeingNewList()
+    // if (actions instanceof Promise) {
+    //   console.log('yere')
+    // }
+    // if (this.props.getMovieComeingNewList() instanceof Promise) {
+    //   console.log('yere')
+    // }
+
     // Promise.all([this.props.getMovieShowTimeList(), this.props.getMovieComeingNewList()]).then(response => {
     //   this.setState({
     //     showTimeList: response[0].value.ms,             // https://api-m.mtime.cn/Showtime/LocationMovies.api?locationId=290

@@ -62,6 +62,7 @@ const actionType = {
 
   EDU_APP_REG: 'EDU_APP_REG',
   EDU_APP_LOGIN: 'EDU_APP_LOGIN',
+  GET_RESTRICT_INFO: 'GET_RESTRICT_INFO',
 }
 
 export default actionType

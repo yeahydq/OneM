@@ -202,7 +202,11 @@ const scenes = Actions.create(
           )(ArticleList)}/>
 
           <Scene key='userLogin' hideNavBar component={connect(
-            (state) => state.me.login,
+            // (state) => state.me.login,
+            state => ({
+              logindy: state.me.login,
+              token: state.movie,
+            }),
             Action.dispatch(['login', 'openChat'])  // Dick: binding all the 'actions' related to login/openChat, into the componment property
           )(UserLogin)}/>
 

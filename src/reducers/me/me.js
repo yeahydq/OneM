@@ -1,11 +1,23 @@
 /**
  * Created by guangqiang on 2017/10/12.
  */
+import type from '../../constants/actionType'
 import {handleActions} from 'redux-actions'
 
-const defaultState = {}
-const handlers = {}
+const initialState = {
+    restrictInfo: [],
+  }
 
-const reducer = handleActions(handlers, defaultState)
+const originalReducers = {}
+
+originalReducers[type.GET_RESTRICT_INFO + type.FETCH_SUCCESS_SUFFIX] = (state, action) => {
+    return {
+      ...state,
+      restrictInfo: action.payload.data
+    }
+  }
+
+  
+const reducer = handleActions(originalReducers, initialState)
 
 export default reducer

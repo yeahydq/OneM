@@ -46,7 +46,7 @@ const _storage = {
   // 使用key来保存数据。这些数据一般是全局独有的，常常需要调用的。
   // 除非你手动移除，这些数据会被永久保存，而且默认不会过期。
   save(key, obj) {
-    initStorage()
+    // initStorage()
     storage.save({
       key: key,  // 注意: 请不要在key中使用_下划线符号!
       data: obj,
@@ -59,7 +59,7 @@ const _storage = {
   // 取数据
   load(key, callBack) {
     initStorage()
-    storage.load({
+    return storage.load({
       key: key,
       // autoSync(默认为true)意味着在没有找到数据或数据过期时自动调用相应的sync方法
       autoSync: true,

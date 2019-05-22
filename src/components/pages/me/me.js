@@ -17,8 +17,10 @@ class Me extends BaseComponent {
     super(props)
     this.scrollView = null
     this.state = {
+      // userInfo: undefined,
       userInfo: undefined,
-      shareModalVisible: false
+      shareModalVisible: false,
+      // auth_token: undefined,
     }
   }
 
@@ -70,11 +72,11 @@ class Me extends BaseComponent {
         {
           this.state.userInfo ?
             <View style={{marginLeft: 10, justifyContent: commonStyle.center}}>
-              <Text style={{marginBottom: 10, fontSize: 16, color: commonStyle.white}}>{data.name ? data.name : '用户名'}</Text>
+              <Text style={{marginBottom: 10, fontSize: 16, color: commonStyle.white}}>{data.userName ? data.userName : '用户名'}</Text>
               <View style={{flexDirection: commonStyle.row, alignItems: commonStyle.center}}>
-                <Text style={{color: commonStyle.white, marginRight: 10}}>{`${data.province}-${data.city}`}</Text>
+                <Text style={{color: commonStyle.white, marginRight: 10}}>{`${data.province ? data.province: ''}-${data.city ? data.city: ''}`}</Text>
                 <TouchableOpacity style={styles.userInfo}>
-                  <Text style={{color: commonStyle.white, marginLeft: 5, fontSize: 12}}>{data.gender}</Text>
+                  <Text style={{color: commonStyle.white, marginLeft: 5, fontSize: 12}}>{data.gender? data.gener: ''}</Text>
                   <Icon name={`oneIcon|${data.gender === '男' ? 'man_o' : 'woman_o'}`} size={15} color={commonStyle.white}/>
                 </TouchableOpacity>
               </View>
@@ -95,7 +97,11 @@ class Me extends BaseComponent {
 
   renderDataItem(title, count) {
     return (
-      <TouchableOpacity style={{justifyContent: commonStyle.center, alignItems: commonStyle.center, padding: 20}}>
+      <TouchableOpacity style={{justifyContent: commonStyle.center, alignItems: commonStyle.center, padding: 20}}
+              // onPress={() => alert('aaa')}
+              onPress = { () => this.props.get_restrict_info()}
+              // onPress={this.show.bind(this,'作者东方耀Q：3096239789')}
+      >
         <Text>{count}</Text>
         <Text style={{marginTop: 5}}>{title}</Text>
       </TouchableOpacity>
@@ -124,7 +130,9 @@ class Me extends BaseComponent {
       </TouchableOpacity>
     )
   }
-
+  show(txt){
+    alert(txt);
+  }
   renderActivityPanel() {
     return (
       <View style={{flexDirection: commonStyle.row, alignItems: commonStyle.center, justifyContent: commonStyle.around, borderBottomWidth: 10, borderBottomColor: commonStyle.lineColor}}>
@@ -183,6 +191,9 @@ class Me extends BaseComponent {
           bounces={false}>
           {this.renderHeaderContainer()}
           {this.renderDataPanel()}
+          <Text>AAA</Text>
+          <Text>{this.props.restrictInfo}</Text>
+          <Text>BBB</Text>
           {this.renderActivityPanel()}
           {this.renderList()}
         </ScrollView>

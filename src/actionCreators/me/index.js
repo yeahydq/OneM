@@ -8,12 +8,14 @@ import {RegExpr} from '../../utils'
 import {ApiSource} from '../../constants/commonType'
 // import {API_URL, MIAMI_URL, TIME_MOVIE_URL, TIME_TICKET_URL, EDUAPPBACKEND_URL} from '../../../constants/urlConfig'
 
-// const login = params =>  postFetchForValidator(PATH.MUSIC_ID_LIST, params)
-const login = params =>  postFetchForValidator(PATH.EDU_APP_LOGIN, params)
+// const login = params =>  postFetchForValidator(PATH.EDU_APP_LOGIN, params)
+const login = params =>  postFetch(PATH.EDU_APP_LOGIN, params, ApiSource.EDUAPPBACKEND)
 // const register = params =>  postFetchForValidator(PATH.EDU_APP_REG, params)
 
 // const login = params =>  postFetchForValidator(PATH.EDU_APP_REG, params)
 const login_curl = params =>  getFetch(PATH.EDU_APP_REG, params, ApiSource.EDUAPPBACKEND)
+
+const get_restrict_info = params => getFetch(PATH.EDU_APP_RESTRICT_INFO, params, ApiSource.EDUAPPBACKEND)
 
 // const movieCommentList = params => getFetch(PATH.MOVIE_COMMENT_LIST, params, ApiSource.TIMETICKET)
 
@@ -57,5 +59,6 @@ export default {
   login_curl,
   register,
   loginValidator,
-  registerValidator
+  registerValidator,
+  get_restrict_info
 }

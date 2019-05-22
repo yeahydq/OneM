@@ -12,7 +12,8 @@ import ActionCreator from '../../actionCreators/me'
 
 // if loginValidator is not pass, it won't trigger login
 const mockLogin = createAction(type.MOVIE_LIST, ActionCreator.login, ActionCreator.loginValidator)
-const eduAppLogin = createAction(type.EDU_APP_LOGIN, ActionCreator.login, ActionCreator.loginValidator)
+// const eduAppLogin = createAction(type.EDU_APP_LOGIN, ActionCreator.login, ActionCreator.loginValidator)
+const eduAppLogin = createAction(type.EDU_APP_LOGIN, ActionCreator.login)
 
 const eduAppReg = createAction(type.EDU_APP_REG, ActionCreator.login, ActionCreator.loginValidator)
 

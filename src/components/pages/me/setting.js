@@ -57,6 +57,7 @@ export default class Setting extends BaseComponent {
 
   logoutClick() {
     storage.remove('userInfo')
+    storage.remove('authtoken')
     this.props.callback && this.props.callback()
     Actions.pop()
   }

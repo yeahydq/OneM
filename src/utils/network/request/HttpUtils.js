@@ -8,6 +8,12 @@ import {Component} from 'react'
 import responseType from '../../../constants/responseType'
 import {Toast} from '../../toast'
 import {RootHUD} from '../../progressHUD'
+import {storage} from '../../../utils'
+import decode from 'jwt-decode';
+import {connect} from 'react-redux'
+import {Actions} from 'react-native-router-flux'
+import Action from '../../../actions'
+// import Action from '../../../actions'
 
 /**
  * fetch 网络请求的header，可自定义header 内容
@@ -17,6 +23,7 @@ let header = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
 }
+
 
 /**
  * GET 请求时，拼接请求URL
@@ -67,7 +74,51 @@ const timeoutFetch = (original_fetch, timeout = 30000) => {
   return abortable_promise
 }
 
+
+
+const isTokenExpired =  (token) => {
+  try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) { // Checking if token is expired. N
+          return true;
+      }
+      else
+          return false;
+  }
+  catch (err) {
+      return false;
+  }
+}
+
+const setToken =  (authtoken) => {
+  // Saves user token to localStorage
+  // localStorage.setItem('id_token', idToken)
+  storage.save('authtoken', authtoken)
+}
+
+const getToken =  async () => {
+    // Retrieves the user token from localStorage
+    // return localStorage.getItem('id_token')
+    var a;
+    return await storage.load('authtoken',(rslt) => {return rslt} )
+    return a
+}
+
+const loggedIn =  () => {
+  // Checks if there is a saved token and it's still valid
+  var token = getToken() // GEtting token from localstorage
+  return token // handwaiving here
+  // return !!token && !isTokenExpired(token) // handwaiving here
+}
+
 export default class HttpUtils extends Component {
+// class _HttpUtils extends Component {
+    constructor(props) {
+    super(props)
+    this.state = {
+      authtoken: undefined,
+    }
+  }
   /**
    * 基于fetch 封装的GET 网络请求
    * @param url 请求URL
@@ -76,32 +127,44 @@ export default class HttpUtils extends Component {
    */
   static getRequest = (url, params = {}) => {
     RootHUD.show()
-    return timeoutFetch(fetch(handleUrl(url)(params), {
-      method: 'GET',
-      headers: header
-    }))
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          Toast.show('服务器繁忙，请稍后再试；\r\nCode:' + response.status)
+    return storage.load('authtoken').then(
+    (authtoken) => {
+        header = {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
         }
-      })
-      .then((response) => {
-        RootHUD.hidden()
-        // response.code：是与服务器端约定code：200表示请求成功，非200表示请求失败，message：请求失败内容
-        if (response && response.res === responseType.RESPONSE_SUCCESS) {
-          return response
-        } else {
-          // 非 200，错误处理
-          // alert(response.message)
-          return response
-        }
-      })
-      .catch((error) => {
-        RootHUD.hidden()
-        Toast.show(error)
-      })
+        header['Authorization'] = 'Bearer ' + authtoken
+
+        return timeoutFetch(
+          fetch(handleUrl(url)(params), {
+          method: 'GET',
+          headers: header
+          })
+        )
+        .then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            Toast.show('服务器繁忙，请稍后再试；\r\nCode:' + response.status)
+          }
+        })
+        .then((response) => {
+          RootHUD.hidden()
+          // response.code：是与服务器端约定code：200表示请求成功，非200表示请求失败，message：请求失败内容
+          if (response && response.res === responseType.RESPONSE_SUCCESS) {
+            return response
+          } else {
+            // 非 200，错误处理
+            // alert(response.message)
+            return response
+          }
+        })
+        .catch((error) => {
+          RootHUD.hidden()
+          Toast.show(error)
+        })
+      }
+    )
   }
 
   /**
@@ -112,6 +175,14 @@ export default class HttpUtils extends Component {
    */
   static postRequrst = (url, params = {}) => {
     RootHUD.show()
+    return storage.load('authtoken')
+    .then((authtoken)=> 
+    {
+      header = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+      header['Authorization'] = 'Bearer ' + authtoken
     return timeoutFetch(fetch(url, {
       method: 'POST',
       headers: header,
@@ -138,5 +209,13 @@ export default class HttpUtils extends Component {
         RootHUD.hidden()
         Toast.show(error)
       })
+    }
+    )
   }
 }
+
+// const HttpUtils = connect(
+//   state => state.me.me,
+//   // Action.dispatch(['me', 'openChat'])
+// )(_HttpUtils)
+// export default HttpUtils
