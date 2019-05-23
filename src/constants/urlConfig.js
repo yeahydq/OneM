@@ -46,6 +46,7 @@ const host = {
     TIME_TICKET_URL: 'https://ticket-api-m.mtime.cn',
     MSITE_URL: 'http://m.xxx.com',
     VENILOG_URL: 'http://venilog.xxx.com',
+    EDUAPPBACKEND_URL33 : 'https://api-m.mtime.cn',
     EDUAPPBACKEND_URL : 'http://192.168.2.238:5000',
   }
 }

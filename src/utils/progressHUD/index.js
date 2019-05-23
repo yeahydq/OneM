@@ -25,6 +25,7 @@ const ShowProgress = {
 
 const RootHUD = {
   show: () => {
+    return 
     let currentStatus = store.getState().common.loading.showHUD
     if (!currentStatus) {
       Actions.loading()
@@ -32,6 +33,7 @@ const RootHUD = {
     }
   },
   hidden: () => {
+    return 
     store.dispatch(loadingAction(false))
   }
 }

@@ -3,6 +3,7 @@
  */
 import React, {Component} from 'react'
 import {View, Text, TouchableOpacity, StyleSheet, Image, ScrollView} from 'react-native'
+// import {View, Text, StyleSheet, Image, ScrollView} from 'react-native'
 import {connect} from 'react-redux'
 import Action from '../../../actions'
 import {BaseComponent} from '../../base/baseComponent'
@@ -20,6 +21,7 @@ class Me extends BaseComponent {
       // userInfo: undefined,
       userInfo: undefined,
       shareModalVisible: false,
+      counter:0
       // auth_token: undefined,
     }
   }
@@ -49,7 +51,7 @@ class Me extends BaseComponent {
 
   componentDidMount() {
     storage.load('userInfo', (response) => this.setState({userInfo: response}))
-    this.props.get_restrict_info()
+    // this.props.get_restrict_info()
 
   }
 
@@ -100,9 +102,17 @@ class Me extends BaseComponent {
   renderDataItem(title, count) {
     return (
       <TouchableOpacity style={{justifyContent: commonStyle.center, alignItems: commonStyle.center, padding: 20}}
-              // onPress={() => alert('aaa')}
-              onPress = { () => this.props.get_restrict_info()}
-              // onPress={this.show.bind(this,'作者东方耀Q：3096239789')}
+              onPress = { () => 
+                {
+                  this.props.get_restrict_info()
+                  this.setState({text:'正在登录...',waiting:true})
+                  setTimeout(()=>{
+                      this.setState({text:'网络不流畅',waiting:false})
+                  },5)
+                  this.setState({counter : this.state.counter+1})
+                }
+              }
+              disabled={this.state.waiting}
       >
         <Text>{count}</Text>
         <Text style={{marginTop: 5}}>{title}</Text>
@@ -118,6 +128,7 @@ class Me extends BaseComponent {
         {this.renderDataItem('想看', 100)}
         {this.renderDataItem('关注', 20)}
         {this.renderDataItem('收藏', 60)}
+        {this.renderDataItem('TEST', this.state.counter)}
       </View>
     )
   }
@@ -194,7 +205,7 @@ class Me extends BaseComponent {
           {this.renderHeaderContainer()}
           {this.renderDataPanel()}
           <Text>AAA</Text>
-          <Text>{this.props.restrictInfo}</Text>
+          <Text>{this.props.restrictInfo ? this.props.restrictInfo : ""}</Text>
           <Text>BBB</Text>
           {this.renderActivityPanel()}
           {this.renderList()}
