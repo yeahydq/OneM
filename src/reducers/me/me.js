@@ -11,11 +11,17 @@ const initialState = {
 const originalReducers = {}
 
 originalReducers[type.GET_RESTRICT_INFO + type.FETCH_SUCCESS_SUFFIX] = (state, action) => {
-    return {
-      ...state,
-      restrictInfo: action.payload.data
-    }
+  return {
+    ...state,
+    restrictInfo: action.payload ? (action.payload.data ? action.payload.data : undefined) : undefined
   }
+}
+
+originalReducers[type.GET_RESTRICT_INFO + type.FETCH_ERROR_SUFFIX] = (state, action) => {
+  return {
+    ...state
+  }
+}
 
   
 const reducer = handleActions(originalReducers, initialState)

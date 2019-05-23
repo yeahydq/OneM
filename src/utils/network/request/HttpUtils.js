@@ -96,12 +96,18 @@ const setToken =  (authtoken) => {
   storage.save('authtoken', authtoken)
 }
 
-const getToken =  async () => {
-    // Retrieves the user token from localStorage
-    // return localStorage.getItem('id_token')
-    var a;
-    return await storage.load('authtoken',(rslt) => {return rslt} )
-    return a
+const getToken =  () => {
+  // Retrieves the user token from localStorage
+  // return localStorage.getItem('id_token')
+  return storage.load('authtoken').then(rtn=> rtn,
+    () => ""
+  )
+}
+
+const delToken =  () => {
+  // Retrieves the user token from localStorage
+  // return localStorage.getItem('id_token')
+  return storage.remove('authtoken')
 }
 
 const loggedIn =  () => {
@@ -127,7 +133,7 @@ export default class HttpUtils extends Component {
    */
   static getRequest = (url, params = {}) => {
     RootHUD.show()
-    return storage.load('authtoken').then(
+    return getToken().then(
     (authtoken) => {
         header = {
           'Accept': 'application/json',
@@ -175,8 +181,7 @@ export default class HttpUtils extends Component {
    */
   static postRequrst = (url, params = {}) => {
     RootHUD.show()
-    return storage.load('authtoken')
-    .then((authtoken)=> 
+    return getToken().then((authtoken)=> 
     {
       header = {
         'Accept': 'application/json',

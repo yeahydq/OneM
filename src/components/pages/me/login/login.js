@@ -161,7 +161,8 @@ export default class Login extends BaseComponent {
           style={styles.loginBtn}
           onPress={() => this.loginClick()}
         >
-          <Text style={{color: commonStyle.white, fontSize: 17}}>登录 {this.props.logindy.auth_token}</Text>
+          {/* <Text style={{color: commonStyle.white, fontSize: 17}}>登录 {this.props.logindy.auth_token}</Text> */}
+          <Text style={{color: commonStyle.white, fontSize: 17}}>登录</Text>
         </TouchableOpacity>
         <View style={{flexDirection: commonStyle.row, alignItems: commonStyle.center, marginTop: 15, marginHorizontal: 30, justifyContent: commonStyle.between}}>
           <TouchableOpacity onPress={() => Actions.userRegister()}>

@@ -49,6 +49,8 @@ class Me extends BaseComponent {
 
   componentDidMount() {
     storage.load('userInfo', (response) => this.setState({userInfo: response}))
+    this.props.get_restrict_info()
+
   }
 
   callback(type) {
