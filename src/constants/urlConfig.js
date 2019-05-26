@@ -47,7 +47,7 @@ const host = {
     MSITE_URL: 'http://m.xxx.com',
     VENILOG_URL: 'http://venilog.xxx.com',
     EDUAPPBACKEND_URL33 : 'https://api-m.mtime.cn',
-    EDUAPPBACKEND_URL : 'http://192.168.2.238:5000',
+    EDUAPPBACKEND_URL : 'http://192.168.2.238:500011',
   }
 }
 // ifconfig | grep inet\ | tail -1 | cut -d " " -f 2

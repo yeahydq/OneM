@@ -179,11 +179,11 @@ class Me extends BaseComponent {
     return (
       <View>
         {this.renderItem('电影票订单')}
-        {this.renderItem('商品订单')}
-        {this.renderItem('购物车')}
+        {/* {this.renderItem('商品订单')} */}
+        {/* {this.renderItem('购物车')} */}
         {this.renderItem('会员俱乐部', 'badge_new_o', '#EE393E')}
-        {this.renderItem('我的活动')}
-        {this.renderItem('直播')}
+        {/* {this.renderItem('我的活动')} */}
+        {/* {this.renderItem('直播')} */}
         <View style={{borderTopWidth: 10, borderTopColor: commonStyle.lineColor}}>
           {this.renderItem('客服/反馈')}
           {this.renderItem('设置', '', '', 'setting')}

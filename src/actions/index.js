@@ -11,6 +11,7 @@ import reading from './reading'
 import me from './me'
 import login from './login'
 import register from './register'
+import global from './global'
 
 const action = {
   openChat,
@@ -21,7 +22,8 @@ const action = {
   reading,
   me,
   login,
-  register
+  register,
+  global,
 }
 
 const dispatch = name => dispatch => {

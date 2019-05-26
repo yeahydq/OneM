@@ -31,14 +31,15 @@ const fetchData = (isCache, requestType) => (url, params, source, callback) => {
       url = `${MIAMI_URL}${url}`
       break
     case ApiSource.TIMEMOVIE:
+      var TIME_MOVIE_URL= global.apiURL.TIMEMOVIE_URL? global.apiURL.TIMEMOVIE_URL: TIME_MOVIE_URL
       url = `${TIME_MOVIE_URL}${url}`
       break
     case ApiSource.TIMETICKET:
       url = `${TIME_TICKET_URL}${url}`
       break
     case ApiSource.EDUAPPBACKEND:
+      var EDUAPPBACKEND_URL = global.apiURL.eduappAPI_URL? global.apiURL.eduappAPI_URL: EDUAPPBACKEND_URL
       url = `${EDUAPPBACKEND_URL}${url}`
-      // console.log("Dick debug url:",url)
       break
     default:
       url = `${API_URL}${url}`

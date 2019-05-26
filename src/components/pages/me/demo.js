@@ -9,6 +9,10 @@ import {Actions} from 'react-native-router-flux'
 
 const data = [
   {
+    key: 'datastoredemo',
+    scene: 'datastoredemo'
+  },
+  {
     key: 'testAntdMobile',
     scene: 'antd-mobile'
   },

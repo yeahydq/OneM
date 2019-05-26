@@ -38,6 +38,7 @@ import TestRedux from "../components/pages/demoPage/TestRedux"
 import CustomComp from '../components/pages/demoPage/TestCustomUIComponent'
 import Network from '../components/pages/demoPage/TestNetwork'
 import TestLogDot from '../components/pages/demoPage/TestLogDot'
+import DataStoreDemoPage from '../components/pages/demoPage/DataStoreDemoPage'
 
 import DemoPage from '../components/pages/me/demo'
 
@@ -74,6 +75,10 @@ import UserInfo from '../components/pages/me/userInfo'
 import SelectorList from '../components/common/selector'
 import WebView from '../components/common/webView'
 
+import getGlobalConfig from '../actions/global'
+import DataStore from '../utils/network/request/DataStore'
+
+
 const reducerCreate = params => {
   const defaultReducer = new Reducer(params)
   return (state, action) => {
@@ -95,8 +100,7 @@ const scenes = Actions.create(
 
         <Stack key="init" back>
           {/* Dick: 欢迎页 */}
-          <Scene key="launch" component={Launch}
-                 hideNavBar />
+          <Scene key="launch" component={Launch} hideNavBar />
 
           {/* Dick: 首页 */}
           <Scene key="main" initial back={false} hideNavBar component={TabBar}/>
@@ -232,6 +236,8 @@ const scenes = Actions.create(
 
           <Scene key="demoPage" title="Demo集合" hideNavBar component={DemoPage}/>
 
+          <Scene key="datastoredemo" component={DataStoreDemoPage}/>
+
           <Scene key="register" title="Register" component={Register}/>
 
           <Scene key="register2" title="Register2" component={Register}/>
@@ -319,6 +325,18 @@ const scenes = Actions.create(
 )
 
 class App extends Component {
+  componentWillMount() {
+    let url = `https://s3.ap-east-1.amazonaws.com/eduappgz/urls.json`;
+    this.dataDtore = new DataStore()
+    this.dataDtore.fetchNetData(url,{
+      method: 'GET'})
+        .then(data => {
+            global.apiURL=data; // global.apiURL.eduappAPI_URL
+        })
+        .catch(error => {
+            error && console.log(error.toString());
+        })
+  }
   render() {
     return (
       <View style={{flex: 1}}>

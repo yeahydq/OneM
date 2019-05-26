@@ -16,6 +16,7 @@ const dataCache = (key, fetchFunc, isCache) => {
     return fetchFunc()
   }
   // 需要缓存
+  // TODO: need to think about the 有效期
   return store.get(key).then(value => {
     if (value) {
       // 如果在缓存中找到数据，则返回缓存中的数据
