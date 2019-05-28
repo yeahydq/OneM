@@ -5,11 +5,13 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {OIcon} from './oneIconFont'
 
 const iconMap = {
-  fontAwesome: FontAwesome,
-  oneIcon: OIcon
+  fontAwesome: FontAwesome, // OneM/node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf
+  oneIcon: OIcon,
+  materialCommunityIcons: MaterialCommunityIcons
 }
 
 class Icon extends Component {

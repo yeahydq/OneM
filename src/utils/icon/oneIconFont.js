@@ -66,9 +66,9 @@ const glyphMap = {
   magic_star_o: 58908,
   gift_o: 59077,
   push_arror_o: 58895,
-  check_success_o: 58926
+  check_success_o: 58926,
 }
-
+                                                  // src/assets/fonts/iconfont.ttf
 const OIcon = createIconSet(glyphMap, 'iconfont', 'iconfont.ttf')
 
 export {OIcon}

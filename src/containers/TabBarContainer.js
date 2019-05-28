@@ -12,7 +12,7 @@ import Me from '../components/pages/me/me'
 import {Icon} from '../utils/icon'
 import {commonStyle} from '../utils'
 import deviceInfo from '../utils/deviceInfo'
-
+import Diary from '../components/pages/demoPage/FetchDemoPage'
 
 export default class MainPage extends Component {
 
@@ -48,9 +48,11 @@ export default class MainPage extends Component {
         <TabNavigator
             tabBarStyle={{height: commonStyle.tabBarHeight, paddingBottom: deviceInfo.isIphoneX ? 34 : 0}}
         >
+          {/* https://oblador.github.io/react-native-vector-icons/ */}
+          {this._renderTabarItems('学习历程','Diary', 'materialCommunityIcons|note-multiple',Diary)}
           {this._renderTabarItems('电影','Movie', 'oneIcon|tb_Movie_o',Movie)}
-          {this._renderTabarItems('音乐','Music', 'oneIcon|tb_Music_o',Music)}
-          {this._renderTabarItems('图文','Picture', 'oneIcon|tb_Picture_o',Picture)}
+          {/* {this._renderTabarItems('音乐','Music', 'oneIcon|tb_Music_o',Music)}
+          {this._renderTabarItems('图文','Picture', 'oneIcon|tb_Picture_o',Picture)} */}
           {this._renderTabarItems('阅读','Reading', 'oneIcon|tb_article_o',Reading)}
           {this._renderTabarItems('我的','Me', 'oneIcon|tb_mine_o',Me)}
         </TabNavigator>
