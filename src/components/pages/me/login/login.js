@@ -70,9 +70,9 @@ export default class Login extends BaseComponent {
             secureTextEntry={this.state.secret}
             onChangeText={text => {
               text = text.replace(/ /g, '_')
-              this.setState({pwd: text})
+              this.setState({password: text})
             }}
-            value={this.state.pwd}
+            value={this.state.password}
           />
           <Switch
             onValueChange={value => {
