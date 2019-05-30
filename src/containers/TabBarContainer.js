@@ -13,6 +13,7 @@ import {Icon} from '../utils/icon'
 import {commonStyle} from '../utils'
 import deviceInfo from '../utils/deviceInfo'
 import Diary from '../components/pages/demoPage/FetchDemoPage'
+import Camera from '../components/pages/demoPage/CameraDemoPage'
 
 export default class MainPage extends Component {
 
@@ -50,6 +51,7 @@ export default class MainPage extends Component {
         >
           {/* https://oblador.github.io/react-native-vector-icons/ */}
           {this._renderTabarItems('学习历程','Diary', 'materialCommunityIcons|note-multiple',Diary)}
+          {this._renderTabarItems('摄像头','Camera', 'materialCommunityIcons|camera',Camera)}
           {this._renderTabarItems('电影','Movie', 'oneIcon|tb_Movie_o',Movie)}
           {/* {this._renderTabarItems('音乐','Music', 'oneIcon|tb_Music_o',Music)}
           {this._renderTabarItems('图文','Picture', 'oneIcon|tb_Picture_o',Picture)} */}

@@ -2,23 +2,64 @@
 
 buildscript {
     repositories {
+        google()
         jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
-    }
-}
-
-allprojects {
-    repositories {
         mavenLocal()
-        jcenter()
+        maven { url 'https://maven.google.com' }
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
     }
+    dependencies {
+        // https://mvnrepository.com/artifact/com.android.tools.build/gradle?repo=google
+        // classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.1.3'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
 }
+
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenLocal()
+        maven { url 'https://maven.google.com' }
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url "$rootDir/../node_modules/react-native/android"
+        }
+
+    }
+}
+
+
+// allprojects {
+//      configurations.all {
+//        resolutionStrategy {
+//          eachDependency { DependencyResolveDetails details ->
+//            if (details.requested.group == 'com.facebook.react' && details.requested.name == 'react-native') {
+//                 def file = new File("$rootDir/../node_modules/react-native/package.json")
+//                 def version = new groovy.json.JsonSlurper().parseText(file.text).version
+//                 details.useVersion version
+//            }
+//          }
+//        }
+//      }
+//   }
+
+// allprojects {
+//     repositories {
+//         mavenLocal()
+//         jcenter()
+//         // maven {
+//         //     // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+//         //     url "$rootDir/../node_modules/react-native/android"
+//         // }
+//         maven { url 'https://maven.google.com' }
+//         // maven { url "$rootDir/../node_modules/react-native/android" }
+
+//     }
+// }

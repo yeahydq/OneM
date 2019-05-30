@@ -3,6 +3,12 @@ package com.one;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.cmcewen.blurview.BlurViewPackage;
+import com.cmcewen.blurview.BlurViewPackage;
+import org.reactnative.camera.RNCameraPackage;
+import com.cmcewen.blurview.BlurViewPackage;
+import com.cmcewen.blurview.BlurViewPackage;
+import org.reactnative.camera.RNCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.github.yamill.orientation.OrientationPackage;
 import com.cmcewen.blurview.BlurViewPackage;
@@ -33,6 +39,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BlurViewPackage(),
+            new BlurViewPackage(),
+            new RNCameraPackage(),
+            new BlurViewPackage(),
+            new BlurViewPackage(),
             new VectorIconsPackage(),
             new OrientationPackage(),
             new BlurViewPackage(),

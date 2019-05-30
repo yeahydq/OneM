@@ -8,6 +8,8 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import {OIcon} from './oneIconFont'
 
+
+// /Users/dickye/codes/OneM/node_modules/react-native-vector-icons/Fonts
 const iconMap = {
   fontAwesome: FontAwesome, // OneM/node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf
   oneIcon: OIcon,

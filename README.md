@@ -545,3 +545,58 @@ OneM是一款纯ReactNative开发的APP，也是作者开发的第三个RN项目
 ## License
 
 **MIT**
+
+
+
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash
+export NVM_DIR="/home/ec2-user/.nvm"
+. ~/.nvm/nvm.sh
+nvm install 11.12.0
+
+
+# one off
+aws s3 cp /Users/dickye/keys/dy-release-key.keystore s3://dydevkeys/ --region=ap-east-1
+
+
+sudo yum install java-1.8.0
+sudo alternatives --config java
+
+
+
+wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u141-b15/336fa29ff2bb4ef291e347e091f7f4a7/jdk-8u141-linux-x64.rpm
+sudo yum install -y jdk-8u141-linux-x64.rpm
+
+
+mkdir ~/keys/
+aws s3 cp s3://dydevkeys/dy-release-key.keystore ~/keys/dy-release-key.keystore --region=ap-east-1
+
+mkdir -p ~/.gradle
+cat <<EOF > ~/.gradle/gradle.properties
+MYAPP_RELEASE_STORE_FILE=/home/ec2-user/keys/dy-release-key.keystore
+MYAPP_RELEASE_KEY_ALIAS=dy-key-alias
+MYAPP_RELEASE_STORE_PASSWORD=Dick1234
+MYAPP_RELEASE_KEY_PASSWORD=Dick1234
+EOF
+
+export JAVA_HOME=/usr/java/jdk1.8.0_141/
+export ANDROID_HOME=~/android
+export PATH=${ANDROID_HOME}/tools/bin:$PATH
+
+mkdir -p $ANDROID_HOME/licenses
+cat <<EOF > $ANDROID_HOME/licenses/android-sdk-license
+24333f8a63b6825ea9c5514f83c2829b004d1fee
+9002c006f4b8d9a16e715a9fa4df30ddb8abf9d9%
+EOF
+
+cd android && ./gradlew assembleRelease && cd -
+
+./gradlew assembleRelease --stacktrace
+
+ls -l 
+aws s3 cp 
+
+wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+unzip sdk-tools-linux-4333796.zip -d android-sdk
+sudo mv android-sdk /opt/
+export ANDROID_SDK_ROOT=/opt/android-sdk
